@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Desi Panda Restaurant</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #8B0000;
+            color: white;
+            scroll-behavior: smooth;
+        }
+
+        /* Sticky Navbar */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: #700000;
+            text-align: center;
+            padding: 15px;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-weight: bold;
+            padding: 5px 10px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #FFD700;
+            border-bottom: 2px solid #FFD700;
+        }
+
+        header {
+            background-color: #5a0000;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 40px;
+            color: #FFD700;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        section {
+            padding: 60px 40px;
+            text-align: center;
+            animation: fadeUp 1.5s ease-in-out;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: #a00000;
+            border-radius: 10px;
+            padding: 15px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        button {
+            background-color: #FFD700;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: white;
+        }
+
+        /* Contact Form */
+        input, textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        /* Popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: white;
+            color: black;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #5a0000;
+            text-align: center;
+            padding: 15px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        @keyframes fadeUp {
+            from {opacity: 0; transform: translateY(30px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header id="home">
+    <h1>Desi Panda Restaurant 🐼</h1>
+    <p>Taste the Adventure!</p>
+</header>
+
+<nav>
+    <a href="#home" class="nav-link active">Home</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#menu" class="nav-link">Menu</a>
+    <a href="#contact" class="nav-link">Contact</a>
+</nav>
+
+<section class="hero">
+    <img src="https://tse4.mm.bing.net/th/id/OIP.0cpAuI8Hc8cDw5FcxnVX_wHaHa?pid=Api&h=220&P=0">
+</section>
+
+<section id="about">
+    <h2>About Us</h2>
+    <p>
+        Welcome to Desi Panda Restaurant 🐼  
+        We serve delicious panda-themed dishes made with love and spice!
+        Experience taste like never before.
+    </p>
+</section>
+
+<section id="menu">
+    <h2>Our Special Menu</h2>
+
+    <div class="menu-container">
+
+        <div class="card">
+            <img src="https://thumbs.dreamstime.com/b/indulge-richness-dal-makhni-buttery-creamy-flavorful-rich-dal-makhni-delight-bowl-butter-coriander-306412983.jpg">
+            <h3>Panda Makhni</h3>
+            <p>₹220</p>
+            <button onclick="openPopup()">Order Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://img.freepik.com/premium-photo/chapati-roti-overlap-another-different-size-shape-isolated-white-background_787273-9531.jpg?w=2000">
+            <h3>Panda Roti</h3>
+            <p>₹30</p>
+            <button onclick="openPopup()">Order Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://i.pinimg.com/originals/18/79/2d/18792d4b27f3c609a412c6b8669f7e33.jpg">
+            <h3>Panda Sushi</h3>
+            <p>₹350</p>
+            <button onclick="openPopup()">Order Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.squarespace-cdn.com/content/v1/61061bcca9b496204219ae67/4704302a-5503-4f71-9b63-f066e108b729/gaeng+nor+mai.jpg?format=1500w">
+            <h3>Panda Bamboo Soup</h3>
+            <p>₹180</p>
+            <button onclick="openPopup()">Order Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://pipingpotcurry.com/wp-content/uploads/2021/05/Indian-Chutneys-Dipping-Sauces-Piping-Pot-Curry.jpg">
+            <h3>Panda Chutney</h3>
+            <p>₹60</p>
+            <button onclick="openPopup()">Order Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://tse4.mm.bing.net/th/id/OIP.ytgptPdyQx2iWXoYfGkzugHaE7?pid=Api&h=220&P=0">
+            <h3>Panda Shake</h3>
+            <p>₹120</p>
+            <button onclick="openPopup()">Order Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Lava-Chocolate-Cakes_EXPS_BOBMZ22_43967_E10_06_1b_v2-12.jpg">
+            <h3>Panda ChocoLava</h3>
+            <p>₹150</p>
+            <button onclick="openPopup()">Order Now</button>
+        </div>
+
+        <div class="card">
+            <img src="https://tse4.mm.bing.net/th/id/OIP.M9gVorq1t03uwpvi1Dps5AHaEK?pid=Api&h=220&P=0">
+            <h3>Panda Cup Cakes</h3>
+            <p>₹90</p>
+            <button onclick="openPopup()">Order Now</button>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <form>
+        <input type="text" placeholder="Your Name" required><br>
+        <input type="email" placeholder="Your Email" required><br>
+        <textarea rows="4" placeholder="Your Message"></textarea><br>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 Desi Panda Restaurant | All Rights Reserved</p>
+</footer>
+
+<div class="popup" id="popup">
+    <div class="popup-content">
+        <h2>🎉 Order Placed Successfully!</h2>
+        <button onclick="closePopup()">Close</button>
+    </div>
+</div>
+
+<script>
+    function openPopup() {
+        document.getElementById("popup").style.display = "flex";
+    }
+
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+
+    const sections = document.querySelectorAll("section, header");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 150;
+            if (pageYOffset >= sectionTop) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").includes(current)) {
+                link.classList.add("active");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
