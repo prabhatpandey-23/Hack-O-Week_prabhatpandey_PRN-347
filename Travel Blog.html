@@ -1,0 +1,270 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prabhat Pandey | Travel Blog</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+scroll-behavior:smooth;
+background:#f5f5f5;
+}
+
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 8%;
+background:#111;
+color:white;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+nav h2{
+color:#ff9800;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:25px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-size:18px;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+color:#ff9800;
+}
+
+/* HERO */
+
+.hero{
+height:80vh;
+background:
+linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+url("https://images.unsplash.com/photo-1501785888041-af3ef285b470");
+background-size:cover;
+background-position:center;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+}
+
+.hero h1{
+font-size:60px;
+}
+
+.hero p{
+font-size:22px;
+margin-top:10px;
+}
+
+/* SECTION */
+
+section{
+padding:70px 10%;
+}
+
+h2{
+text-align:center;
+margin-bottom:40px;
+font-size:36px;
+}
+
+/* BLOG GRID */
+
+.blog-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.blog-card{
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+transition:0.3s;
+}
+
+.blog-card:hover{
+transform:scale(1.05);
+}
+
+.blog-card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.blog-text{
+padding:20px;
+}
+
+.blog-text h3{
+margin-bottom:10px;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+transition:0.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.1);
+}
+
+/* FOOTER */
+
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:25px;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<h2>Prabhat Travels</h2>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#trips">Trips</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#about">About</a></li>
+</ul>
+
+</nav>
+
+<div class="hero" id="home">
+<h1>Prabhat Pandey</h1>
+<p>Exploring the world one place at a time</p>
+</div>
+
+<section id="trips">
+
+<h2>My Travel Stories</h2>
+
+<div class="blog-grid">
+
+<div class="blog-card">
+<img src="https://images.unsplash.com/photo-1587922546307-776227941871">
+<div class="blog-text">
+<h3>Goa Beach Trip</h3>
+<p>
+Goa is one of India's most famous beach destinations. Known for its golden beaches,
+vibrant nightlife and Portuguese heritage, Goa offers a relaxing yet exciting
+experience. During my visit I enjoyed watching the sunset at Baga Beach and tasting
+delicious seafood by the sea.
+</p>
+</div>
+</div>
+
+<div class="blog-card">
+<img src="https://images.unsplash.com/photo-1609947017136-9daf32a5eb16">
+<div class="blog-text">
+<h3>Manali Snow Adventure</h3>
+<p>
+Manali is a beautiful hill station located in Himachal Pradesh surrounded by
+snow-covered mountains and pine forests. It is famous for adventure activities
+like trekking, skiing and paragliding. My trip to Solang Valley was unforgettable
+with breathtaking views and cool mountain air.
+</p>
+</div>
+</div>
+
+<div class="blog-card">
+<img src="https://images.unsplash.com/photo-1599661046289-e31897846e41">
+<div class="blog-text">
+<h3>Jaipur Heritage Tour</h3>
+<p>
+Jaipur, known as the Pink City of India, is rich in royal history and architecture.
+Famous attractions include Hawa Mahal, Amber Fort and City Palace. Walking through
+the colorful markets and tasting traditional Rajasthani food made this trip a
+wonderful cultural experience.
+</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="gallery">
+
+<h2>Travel Gallery</h2>
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+<img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+<img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
+
+</div>
+
+</section>
+
+<section id="about">
+
+<h2>About Me</h2>
+
+<p style="text-align:center; max-width:700px; margin:auto;">
+Hi, I'm <b>Prabhat Pandey</b>. I love exploring mountains, beaches and historic
+cities across India. This travel blog is where I share my journeys, travel
+experiences and memories from different destinations.
+</p>
+
+</section>
+
+<footer>
+
+<p>© 2026 Prabhat Pandey | Travel Blog</p>
+
+</footer>
+
+</body>
+</html>
+```
+
