@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>YUDI Quiz</title>
+
+<style>
+
+body{
+font-family: Arial;
+background: linear-gradient(120deg,#4facfe,#00f2fe);
+margin:0;
+padding:40px;
+}
+
+.quiz-box{
+background:white;
+padding:30px;
+max-width:600px;
+margin:auto;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1{
+text-align:center;
+}
+
+.timer{
+text-align:center;
+font-size:20px;
+color:red;
+margin-bottom:20px;
+}
+
+.question{
+margin-bottom:20px;
+}
+
+button{
+width:100%;
+padding:12px;
+font-size:18px;
+background:#007bff;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+.result{
+text-align:center;
+font-size:22px;
+margin-top:20px;
+font-weight:bold;
+}
+
+.correct{
+color:green;
+}
+
+.wrong{
+color:red;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="quiz-box">
+
+<h1>Student Quiz</h1>
+
+<div class="timer">
+Time Left: <span id="time">30</span> seconds
+</div>
+
+<form id="quizForm">
+
+<div class="question">
+<p>1. What does HTML stand for?</p>
+<label><input type="radio" name="q1" value="a"> HighText Machine Language</label><br>
+<label><input type="radio" name="q1" value="b"> HyperText Markup Language</label><br>
+<label><input type="radio" name="q1" value="c"> Hyper Tool Markup Language</label>
+</div>
+
+<div class="question">
+<p>2. Which language styles a website?</p>
+<label><input type="radio" name="q2" value="a"> CSS</label><br>
+<label><input type="radio" name="q2" value="b"> HTML</label><br>
+<label><input type="radio" name="q2" value="c"> Java</label>
+</div>
+
+<div class="question">
+<p>3. Which one is NOT a programming language?</p>
+<label><input type="radio" name="q3" value="a"> Python</label><br>
+<label><input type="radio" name="q3" value="b"> Java</label><br>
+<label><input type="radio" name="q3" value="c"> HTML</label>
+</div>
+
+<div class="question">
+<p>4. Which tag shows an image?</p>
+<label><input type="radio" name="q4" value="a"> &lt;pic&gt;</label><br>
+<label><input type="radio" name="q4" value="b"> &lt;img&gt;</label><br>
+<label><input type="radio" name="q4" value="c"> &lt;image&gt;</label>
+</div>
+
+<div class="question">
+<p>5. Who created Java?</p>
+<label><input type="radio" name="q5" value="a"> Microsoft</label><br>
+<label><input type="radio" name="q5" value="b"> Apple</label><br>
+<label><input type="radio" name="q5" value="c"> Sun Microsystems</label>
+</div>
+
+<br>
+
+<button type="button" onclick="submitQuiz()">Submit Quiz</button>
+
+</form>
+
+<div id="result" class="result"></div>
+
+</div>
+
+<script>
+
+let time = 30;
+
+let timer = setInterval(function(){
+
+time--;
+
+document.getElementById("time").innerText = time;
+
+if(time <= 0){
+clearInterval(timer);
+submitQuiz();
+}
+
+},1000);
+
+function submitQuiz(){
+
+clearInterval(timer);
+
+let score = 0;
+
+let answers = {
+q1:"b",
+q2:"a",
+q3:"c",
+q4:"b",
+q5:"c"
+};
+
+let form = document.forms["quizForm"];
+
+for(let q in answers){
+
+let selected = form[q].value;
+
+if(selected === answers[q]){
+score++;
+}
+
+}
+
+document.getElementById("result").innerHTML =
+"Your Score: " + score + " / 5";
+
+}
+
+</script>
+
+</body>
+</html>
