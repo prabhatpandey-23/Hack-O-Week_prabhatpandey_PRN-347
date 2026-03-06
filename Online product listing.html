@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Panda Online Seller</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0f172a;
+color:white;
+}
+
+/* NAVBAR */
+
+nav{
+background:#020617;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+color:#22c55e;
+}
+
+.search{
+padding:8px;
+border-radius:5px;
+border:none;
+width:220px;
+}
+
+.cart{
+background:#22c55e;
+padding:8px 15px;
+border-radius:5px;
+color:black;
+font-weight:bold;
+}
+
+/* PRODUCTS */
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.product{
+background:#1e293b;
+padding:15px;
+border-radius:10px;
+text-align:center;
+transition:0.3s;
+}
+
+.product:hover{
+transform:scale(1.07);
+box-shadow:0 0 15px #22c55e;
+}
+
+.product img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.price{
+color:#22c55e;
+font-size:20px;
+margin:10px 0;
+}
+
+.rating{
+color:gold;
+}
+
+button{
+background:#22c55e;
+border:none;
+padding:10px;
+width:100%;
+border-radius:5px;
+cursor:pointer;
+font-weight:bold;
+}
+
+button:hover{
+background:#16a34a;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:20px;
+background:#020617;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">🐼 Panda Online Seller</div>
+
+<input class="search" id="search" placeholder="Search products..." onkeyup="searchProduct()">
+
+<div class="cart">
+Cart 🛒 <span id="cart-count">0</span>
+</div>
+
+</nav>
+
+<div class="container" id="products">
+
+<!-- PHONE -->
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+<h3>Smart Phone</h3>
+<div class="rating">⭐⭐⭐⭐⭐</div>
+<p class="price">₹69,999</p>
+<button onclick="buy('Smart Phone')">Buy Now</button>
+</div>
+
+<!-- LAPTOP -->
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<h3>Gaming Laptop</h3>
+<div class="rating">⭐⭐⭐⭐⭐</div>
+<p class="price">₹85,000</p>
+<button onclick="buy('Laptop')">Buy Now</button>
+</div>
+
+<!-- HOODIE -->
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1523381294911-8d3cead13475">
+<h3>Street Hoodie</h3>
+<div class="rating">⭐⭐⭐⭐</div>
+<p class="price">₹1,599</p>
+<button onclick="buy('Hoodie')">Buy Now</button>
+</div>
+
+<!-- CARGO -->
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1602293589930-45aad59ba3ab">
+<h3>Cargo Jeans</h3>
+<div class="rating">⭐⭐⭐⭐</div>
+<p class="price">₹2,199</p>
+<button onclick="buy('Cargo Jeans')">Buy Now</button>
+</div>
+
+<!-- CASUAL PANTS -->
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80">
+<h3>Casual Pants</h3>
+<div class="rating">⭐⭐⭐⭐</div>
+<p class="price">₹1,299</p>
+<button onclick="buy('Casual Pants')">Buy Now</button>
+</div>
+
+<!-- HEADPHONES -->
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb">
+<h3>Gaming Headphones</h3>
+<div class="rating">⭐⭐⭐⭐⭐</div>
+<p class="price">₹1,999</p>
+<button onclick="buy('Gaming Headphones')">Buy Now</button>
+</div>
+
+<!-- GAMING MOUSE -->
+
+<div class="product">
+<img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7">
+<h3>Gaming CPU</h3>
+<div class="rating">⭐⭐⭐⭐</div>
+<p class="price">₹899</p>
+<button onclick="buy('Gaming CPU')">Buy Now</button>
+</div>
+
+</div>
+
+<footer>
+
+© 2026 Panda Online Seller  
+Created by Prabhat Pandey 🚀
+
+</footer>
+
+<script>
+
+let cart=0;
+
+function buy(product){
+
+cart++;
+
+document.getElementById("cart-count").innerText=cart;
+
+alert(product+" added to cart!");
+
+}
+
+/* SEARCH */
+
+function searchProduct(){
+
+let input=document.getElementById("search").value.toLowerCase();
+
+let products=document.getElementsByClassName("product");
+
+for(let i=0;i<products.length;i++){
+
+let title=products[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+
+if(title.includes(input))
+
+products[i].style.display="block";
+
+else
+
+products[i].style.display="none";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
