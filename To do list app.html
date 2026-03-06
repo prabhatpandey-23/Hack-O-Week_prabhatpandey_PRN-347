@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PRO Task Manager</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+transition:0.3s;
+}
+
+.dark{
+background:#1e1e1e;
+color:white;
+}
+
+.container{
+background:white;
+padding:25px;
+width:420px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.dark .container{
+background:#2c2c2c;
+}
+
+h1{
+text-align:center;
+}
+
+.top{
+display:flex;
+gap:5px;
+margin-bottom:10px;
+}
+
+input,select{
+padding:8px;
+}
+
+button{
+padding:8px 12px;
+background:#4CAF50;
+border:none;
+color:white;
+cursor:pointer;
+border-radius:5px;
+}
+
+#taskList{
+list-style:none;
+padding:0;
+margin-top:15px;
+}
+
+li{
+background:#eee;
+padding:10px;
+margin:8px 0;
+border-radius:6px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.dark li{
+background:#444;
+}
+
+.completed{
+text-decoration:line-through;
+opacity:0.6;
+}
+
+.priority-high{color:red;}
+.priority-medium{color:orange;}
+.priority-low{color:green;}
+
+.progressbar{
+height:10px;
+background:#ddd;
+border-radius:10px;
+margin-top:10px;
+}
+
+.progress{
+height:10px;
+background:#4CAF50;
+width:0%;
+border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>PRO Task Manager</h1>
+
+<button onclick="toggleDark()">🌙 Dark Mode</button>
+
+<div class="top">
+<input id="taskInput" placeholder="New task">
+
+<select id="priority">
+<option value="high">High</option>
+<option value="medium">Medium</option>
+<option value="low">Low</option>
+</select>
+
+<input type="date" id="deadline">
+
+<button onclick="addTask()">Add</button>
+</div>
+
+<ul id="taskList"></ul>
+
+<div class="progressbar">
+<div class="progress" id="progress"></div>
+</div>
+
+<p id="progressText">0% Complete</p>
+
+</div>
+
+<script>
+
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+function save(){
+localStorage.setItem("tasks",JSON.stringify(tasks));
+}
+
+function render(){
+
+let list=document.getElementById("taskList");
+list.innerHTML="";
+
+let completed=0;
+
+tasks.forEach((task,i)=>{
+
+let li=document.createElement("li");
+
+if(task.done){
+li.classList.add("completed");
+completed++;
+}
+
+li.innerHTML = `
+<span>
+<b class="priority-${task.priority}">[${task.priority}]</b>
+${task.text}
+<br>
+<small>Deadline: ${task.deadline}</small>
+</span>
+`;
+
+li.onclick=function(){
+tasks[i].done=!tasks[i].done;
+save();
+render();
+};
+
+let del=document.createElement("button");
+del.innerText="Delete";
+
+del.onclick=function(e){
+e.stopPropagation();
+tasks.splice(i,1);
+save();
+render();
+};
+
+li.appendChild(del);
+
+list.appendChild(li);
+
+});
+
+let percent = tasks.length==0 ? 0 : (completed/tasks.length)*100;
+
+document.getElementById("progress").style.width = percent+"%";
+document.getElementById("progressText").innerText = Math.round(percent)+"% Complete";
+
+}
+
+function addTask(){
+
+let text=document.getElementById("taskInput").value;
+let priority=document.getElementById("priority").value;
+let deadline=document.getElementById("deadline").value;
+
+if(text==""){
+alert("Enter task");
+return;
+}
+
+tasks.push({
+text:text,
+priority:priority,
+deadline:deadline,
+done:false
+});
+
+document.getElementById("taskInput").value="";
+
+save();
+render();
+
+}
+
+function toggleDark(){
+document.body.classList.toggle("dark");
+}
+
+render();
+
+</script>
+
+</body>
+</html>
